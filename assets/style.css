@@ -1,0 +1,187 @@
+/* General body and main app container */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+#main-app-container {
+    background-color: #3F307E; /* Darker background for the app */
+    min-height: 100vh; /* Ensure it covers full viewport height */
+    padding: 20px; /* Overall padding around content */
+    font-family: sans-serif;
+    color: white; /* Default text color */
+}
+
+/* Card Containers - Common style for sections like Header, Filters, Charts, Tables */
+.card-container {
+    background-color: #7A68B8; /* Lighter background for sections/cards */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px; /* Space between cards */
+}
+
+/* Header specific styles */
+.header-card {
+    text-align: center;
+    padding: 30px;
+}
+.header-card h1 {
+    margin-bottom: 5px;
+    color: #FFFFFF;
+}
+.header-card p {
+    color: #E0E0E0;
+}
+
+/* Filters Section Layout */
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 15px; /* Spacing between filters */
+    margin-bottom: 15px;
+}
+
+/* Labels for dropdowns/filters */
+.filter-label {
+    color: #E0E0E0; /* Light gray for labels */
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block; /* Make label a block element */
+}
+
+/* Dash Dropdown (dcc.Dropdown) styling */
+.dash-dropdown .Select-control { /* Main dropdown container */
+    background-color: #A99DE0 !important; /* Lighter background */
+    border-radius: 8px !important;
+    border: 1px solid #8B5CFF !important; /* Purple border */
+    color: white !important;
+    height: 38px; /* Standard height */
+    min-height: 38px; /* Ensure minimum height */
+}
+.dash-dropdown .Select-value-label { /* Selected value text */
+    color: white !important;
+}
+.dash-dropdown .Select-input { /* Input field */
+    color: white !important;
+    padding-left: 10px !important;
+    line-height: 38px !important; /* Center text vertically */
+}
+.dash-dropdown .Select-placeholder { /* Placeholder text */
+    color: #E0E0E0 !important;
+    padding-left: 10px !important;
+    line-height: 38px !important; /* Center text vertically */
+}
+.dash-dropdown .Select--single > .Select-control .Select-value { /* For single select values */
+    padding-left: 10px !important;
+    line-height: 38px !important;
+}
+
+/* Dash Dropdown Options List */
+.dash-dropdown .Select-menu-outer { /* Container for dropdown options */
+    background-color: #7A68B8 !important;
+    border-radius: 8px !important;
+    border: 1px solid #8B5CFF !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    z-index: 1000; /* Ensure it's above other elements */
+}
+.dash-dropdown .Select-option { /* Individual option */
+    color: white !important;
+    padding: 10px !important;
+}
+.dash-dropdown .Select-option.is-focused { /* Option on hover */
+    background-color: #8B5CFF !important;
+}
+.dash-dropdown .Select-option.is-selected { /* Selected option */
+    background-color: #6C4EC7 !important; /* Darker purple for selected */
+}
+
+/* Titles and Headers within sections */
+h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF; /* All headings white */
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* KPI Cards Layout */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive KPI cards */
+    gap: 15px; /* Spacing between KPI cards */
+}
+
+.kpi-card {
+    background-color: #A99DE0; /* Lighter shade for KPI cards */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    height: 100px; /* Fixed height for uniformity */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.kpi-label {
+    font-size: 14px;
+    color: #E0E0E0;
+    margin-bottom: 5px;
+}
+.kpi-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+/* Insight boxes (for Key Insights section) */
+.insight-box {
+    background-color: #A99DE0;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+.insight-box p {
+    color: white;
+    margin: 0;
+}
+
+/* Dash Graph Component styling */
+.chart-container .dash-graph {
+    border-radius: 10px; /* Match card styling */
+    overflow: hidden; /* Ensure rounded corners */
+}
+
+/* Custom Table Styling (for Top Influencers) */
+.dash-table-container .dash-spreadsheet-container {
+    background-color: #A99DE0; /* Background for the whole table container */
+    border-radius: 10px;
+    overflow: hidden; /* For rounded corners */
+}
+
+.dash-table-container .dash-header .dash-header-inner {
+    background-color: #8B5CFF; /* Header background color */
+    color: white;
+    font-weight: bold;
+    border-bottom: 1px solid #6C4EC7;
+}
+
+.dash-table-container .dash-cell-value {
+    color: #333; /* Default cell text color - Changed for readability */
+    padding: 12px;
+    border-bottom: 1px solid #7A68B8; /* Cell borders */
+}
+
+/* Specific ROAS column styling in table */
+.roas-positive {
+    color: #66FF66 !important; /* Green */
+    font-weight: bold;
+}
+.roas-neutral {
+    color: #AAAAAA !important; /* Grey */
+}
+.roas-negative {
+    color: #FF6666 !important; /* Red */
+}
