@@ -544,6 +544,7 @@ def update_dashboard_content(selected_brand, selected_platform, selected_categor
         conversion_funnel_fig
     )
 
-# --- Run the app (for local development) ---
+server = app.server  # <- Hugging Face needs this line
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run_server(host="0.0.0.0", port=8050)
