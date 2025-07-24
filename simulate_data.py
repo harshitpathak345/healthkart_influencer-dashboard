@@ -131,16 +131,19 @@ def simulate_payouts(df_influencers, df_posts, df_tracking_data):
     return df_payouts
 
 # Generate and save data
+# ... (rest of the file content) ...
+
+# Generate and save data
 if __name__ == "__main__":
-    df_influencers = simulate_influencers(num_influencers=100)
+    df_influencers = simulate_influencers(num_influencers=10) # Drastically REDUCED from 100
     df_influencers.to_csv('influencers.csv', index=False)
     print("Generated influencers.csv")
 
-    df_posts = simulate_posts(df_influencers, num_posts=1500)
+    df_posts = simulate_posts(df_influencers, num_posts=50) # Drastically REDUCED from 1500
     df_posts.to_csv('posts.csv', index=False)
     print("Generated posts.csv")
 
-    df_tracking_data = simulate_tracking_data(df_influencers, num_tracking_entries=7000)
+    df_tracking_data = simulate_tracking_data(df_influencers, num_tracking_entries=200) # Drastically REDUCED from 7000
     df_tracking_data.to_csv('tracking_data.csv', index=False)
     print("Generated tracking_data.csv")
 
