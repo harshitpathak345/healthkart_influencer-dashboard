@@ -1,0 +1,16 @@
+# Python temporary files
+__pycache__/
+*.pyc
+
+# Virtual environment folder - THIS IS THE CRITICAL LINE
+venv/
+
+# Operating system generated files
+.DS_Store
+Thumbs.db
+
+# Data files (commented out so they ARE pushed for deployment)
+#*.csv
+#*.xlsx
+#*.json
+#*.db
