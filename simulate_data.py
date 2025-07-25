@@ -12,10 +12,10 @@ np.random.seed(42)
 random.seed(42)
 
 # --- 1. Simulate influencers data ---
-def simulate_influencers(num_influencers=100):
+def simulate_influencers(num_influencers=100): # Using original size, but start smaller if memory is still an issue
     influencers = []
     platforms = ['Instagram', 'YouTube', 'Twitter']
-    categories = ['Fitness', 'Nutrition', 'Lifestyle', 'Beauty', 'Health', 'Cooking'] # Added Health based on screenshot
+    categories = ['Fitness', 'Nutrition', 'Lifestyle', 'Beauty', 'Health', 'Cooking']
     genders = ['Male', 'Female', 'Other']
 
     for i in range(num_influencers):
@@ -23,7 +23,7 @@ def simulate_influencers(num_influencers=100):
         name = fake.name()
         category = random.choice(categories)
         gender = random.choice(genders)
-
+        
         # Follower count distribution: more smaller influencers, fewer very large ones
         if random.random() < 0.6: # 60% are micro/small influencers
             follower_count = random.randint(5_000, 100_000)
@@ -31,7 +31,7 @@ def simulate_influencers(num_influencers=100):
             follower_count = random.randint(100_001, 1_000_000)
         else: # 10% are macro
             follower_count = random.randint(1_000_001, 5_000_000)
-
+            
         platform = random.choice(platforms)
         influencers.append([_id, name, category, gender, follower_count, platform])
 
@@ -39,7 +39,7 @@ def simulate_influencers(num_influencers=100):
     return df_influencers
 
 # --- 2. Simulate posts data ---
-def simulate_posts(df_influencers, num_posts=1500):
+def simulate_posts(df_influencers, num_posts=1500): # Using original size
     posts = []
     start_date = datetime(2024, 6, 1) # Adjusted start date to match screenshot's time frame
     end_date = datetime(2024, 7, 21) # Adjusted end date to match screenshot's time frame
@@ -71,11 +71,11 @@ def simulate_posts(df_influencers, num_posts=1500):
     return df_posts
 
 # --- 3. Simulate tracking_data ---
-def simulate_tracking_data(df_influencers, num_tracking_entries=7000):
+def simulate_tracking_data(df_influencers, num_tracking_entries=7000): # Using original size
     tracking_data = []
     start_date = datetime(2024, 6, 1) # Adjusted start date
     end_date = datetime(2024, 7, 21) # Adjusted end date
-
+    
     # Specific HealthKart brands and their products
     products_brands = {
         'Whey Protein (MB)': 'MuscleBlaze', 'Creatine (MB)': 'MuscleBlaze', 'BCAA (MB)': 'MuscleBlaze',
@@ -131,24 +131,25 @@ def simulate_payouts(df_influencers, df_posts, df_tracking_data):
     return df_payouts
 
 # Generate and save data
-# ... (rest of the file content) ...
-
-# Generate and save data
 if __name__ == "__main__":
-    df_influencers = simulate_influencers(num_influencers=10) # Drastically REDUCED from 100
-    df_influencers.to_csv('influencers.csv', index=False)
-    print("Generated influencers.csv")
+    # For initial testing with Parquet, you might want to use smaller numbers first
+    # e.g., num_influencers=20, num_posts=200, num_tracking_entries=500
+    # Once confirmed working, you can change them back to the original larger values.
+    
+    df_influencers = simulate_influencers(num_influencers=100) # Use 100 for final version
+    df_influencers.to_parquet('influencers.parquet', index=False) # CHANGED TO PARQUET
+    print("Generated influencers.parquet")
 
-    df_posts = simulate_posts(df_influencers, num_posts=50) # Drastically REDUCED from 1500
-    df_posts.to_csv('posts.csv', index=False)
-    print("Generated posts.csv")
+    df_posts = simulate_posts(df_influencers, num_posts=1500) # Use 1500 for final version
+    df_posts.to_parquet('posts.parquet', index=False) # CHANGED TO PARQUET
+    print("Generated posts.parquet")
 
-    df_tracking_data = simulate_tracking_data(df_influencers, num_tracking_entries=200) # Drastically REDUCED from 7000
-    df_tracking_data.to_csv('tracking_data.csv', index=False)
-    print("Generated tracking_data.csv")
+    df_tracking_data = simulate_tracking_data(df_influencers, num_tracking_entries=7000) # Use 7000 for final version
+    df_tracking_data.to_parquet('tracking_data.parquet', index=False) # CHANGED TO PARQUET
+    print("Generated tracking_data.parquet")
 
-    df_payouts = simulate_payouts(df_influencers, df_posts, df_tracking_data)
-    df_payouts.to_csv('payouts.csv', index=False)
-    print("Generated payouts.csv")
+    df_payouts = simulate_payouts(df_influencers, df_posts, df_tracking_data) # CHANGED TO PARQUET
+    df_payouts.to_parquet('payouts.parquet', index=False) # CHANGED TO PARQUET
+    print("Generated payouts.parquet")
 
     print("\nAll simulated data files created successfully.")
